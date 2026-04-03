@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Open for a Surprise</title>
+    <style>
+        body { background-color: #121212; color: white; text-align: center; font-family: sans-serif; padding-top: 100px; }
+        button { padding: 20px 40px; font-size: 24px; cursor: pointer; background: #ff4757; color: white; border: none; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <h1>You have received a message!</h1>
+    <p>Click below to listen:</p>
+    
+    <button onclick="playAudio()">PLAY MESSAGE</button>
+
+    <audio id="myAudio">
+      <source src="https://https://files.catbox.moe/5cvw24.mp3.com/audio.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+    function playAudio() {
+      var x = document.getElementById("myAudio");
+      x.play();
+      alert("Pranked!"); // Optional: adds a pop-up message
+    }
+    </script>
+</body>
+</html>
