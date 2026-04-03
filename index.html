@@ -1,28 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Open for a Surprise</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Message Received</title>
     <style>
-        body { background-color: #121212; color: white; text-align: center; font-family: sans-serif; padding-top: 100px; }
-        button { padding: 20px 40px; font-size: 24px; cursor: pointer; background: #ff4757; color: white; border: none; border-radius: 10px; }
+        body { 
+            background-color: #0f172a; 
+            color: #f8fafc; 
+            text-align: center; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 1px solid #334155;
+        }
+        h1 { font-size: 24px; margin-bottom: 10px; }
+        p { color: #94a3b8; margin-bottom: 30px; }
+        
+        #playBtn { 
+            padding: 15px 40px; 
+            font-size: 18px; 
+            font-weight: bold;
+            cursor: pointer; 
+            background: #3b82f6; 
+            color: white; 
+            border: none; 
+            border-radius: 50px;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+        #playBtn:active { transform: scale(0.95); background: #2563eb; }
     </style>
 </head>
 <body>
-    <h1>You have received a message!</h1>
-    <p>Click below to listen:</p>
-    
-    <button onclick="playAudio()">PLAY MESSAGE</button>
 
-    <audio id="myAudio">
-      <source src="https://https://files.catbox.moe/5cvw24.mp3.com/audio.mp3" type="audio/mpeg">
+    <div class="container">
+        <h1>New Audio Message</h1>
+        <p>You have received a private voice note.</p>
+        
+        <button id="playBtn" onclick="playAudio()">▶ PLAY MESSAGE</button>
+    </div>
+
+    <audio id="myAudio" preload="auto">
+      <source src="https://files.catbox.moe/5cvw24.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
     </audio>
 
     <script>
     function playAudio() {
-      var x = document.getElementById("myAudio");
-      x.play();
-      alert("Pranked!"); // Optional: adds a pop-up message
+        var audio = document.getElementById("myAudio");
+        var btn = document.getElementById("playBtn");
+        
+        // Play the audio
+        audio.play().then(() => {
+            btn.innerHTML = "PLAYING...";
+            btn.style.background = "#10b981"; // Changes to green when playing
+        }).catch(error => {
+            console.log("Playback failed:", error);
+            alert("Please interact with the page first!");
+        });
     }
     </script>
+
 </body>
 </html>
